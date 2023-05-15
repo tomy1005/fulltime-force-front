@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GitService } from 'src/app/services/git/git.service';
 
 @Component({
   selector: 'git-history',
@@ -7,4 +8,24 @@ import { Component } from '@angular/core';
 })
 export class GitHistoryComponent {
 
+  constructor(private _gitService: GitService) { }
+  public commitsFront: any = [];
+  public commitsBack: any = [];
+
+  ngOnInit() {
+    this.getAllCommitsFront();
+    this.getAllCommitsBack();
+  }
+
+  getAllCommitsFront() {
+    this._gitService.getCommitsFront().subscribe(data => {
+      this.commitsFront = data;
+    })
+  }
+
+  getAllCommitsBack() {
+    this._gitService.getCommitsBack().subscribe(data => {
+      this.commitsBack = data;
+    })
+  }
 }

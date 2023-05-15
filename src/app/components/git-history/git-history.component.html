@@ -1,1 +1,38 @@
-<p>git-history works!</p>
+<h1 class="text-center">Git commits</h1>
+<h2 class="text-center">Front-end commits</h2>
+<div class="blog-card" *ngFor="let commit of commitsFront">
+  <div class="meta">
+    <div class="photo-wrapper">
+      <img [src]="commit.author.avatar_url" class="photo" />
+    </div>
+  </div>
+  <div class="description">
+    <h1>Author: {{commit.commit.author.name}}</h1>
+    <h2>Email: {{commit.commit.author.email}}</h2>
+    <p> {{commit.commit.message}}</p>
+    <p class="read-more">
+      <label>{{commit.commit.author.date | date: 'MM/dd/yyyy'}}</label>
+    </p>
+  </div>
+</div>
+
+<h2 class="text-center">Back-end commits</h2>
+
+<div class="blog-card" *ngFor="let commit of commitsBack">
+  <div class="meta">
+    <div class="photo-wrapper">
+      <img [src]="commit.author.avatar_url" class="photo"/>
+    </div>
+  </div>
+  <div class="description">
+    <h1>Author: {{commit.commit.author.name}}</h1>
+    <h2>Email: {{commit.commit.author.email}}</h2>
+    <p> {{commit.commit.message}}</p>
+    <p class="read-more">
+      <label>{{commit.commit.author.date | date: 'MM/dd/yyyy'}}</label>
+    </p>
+  </div>
+</div>
+<div class="text-center">
+  <button class="btn btn-primary" (click)="getAllCommitsFront()">Get All the commits</button>
+</div>
